@@ -4,7 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Data
@@ -13,7 +18,11 @@ import java.util.UUID;
 @Builder
 public class CustomerDTO {
 
+    @Null
     private UUID id;
+
+    @NotBlank
+    @Size(min = 3, max = 100)
     private String name;
 
 }
