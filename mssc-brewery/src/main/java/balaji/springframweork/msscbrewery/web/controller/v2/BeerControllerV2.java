@@ -2,6 +2,7 @@ package balaji.springframweork.msscbrewery.web.controller.v2;
 
 import balaji.springframweork.msscbrewery.web.model.v2.BeerDTOV2;
 import balaji.springframweork.msscbrewery.web.service.v2.BeerServiceV2;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v2/beer")
 @Validated
 public class BeerControllerV2 {
 
     private final BeerServiceV2 beerServiceV2;
-
-    public BeerControllerV2(BeerServiceV2 beerServiceV2) {
-        this.beerServiceV2 = beerServiceV2;
-    }
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDTOV2> getBeer(@Valid @NotNull @PathVariable("beerId") UUID beerId) {

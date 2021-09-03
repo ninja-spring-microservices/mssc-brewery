@@ -2,6 +2,7 @@ package balaji.springframweork.msscbrewery.web.controller;
 
 import balaji.springframweork.msscbrewery.web.model.BeerDTO;
 import balaji.springframweork.msscbrewery.web.service.BeerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,12 @@ import java.util.stream.Collectors;
 
 @Deprecated
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/beer")
 @Validated
 public class BeerController {
 
     private final BeerService beerService;
-
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
-    }
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDTO> getBeer(@PathVariable("beerId") UUID beerId) {

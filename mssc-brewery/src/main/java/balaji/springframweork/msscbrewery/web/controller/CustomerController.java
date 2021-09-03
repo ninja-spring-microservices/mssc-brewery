@@ -2,6 +2,7 @@ package balaji.springframweork.msscbrewery.web.controller;
 
 import balaji.springframweork.msscbrewery.web.model.CustomerDTO;
 import balaji.springframweork.msscbrewery.web.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Validated
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping("/{customerId}")
     public ResponseEntity<CustomerDTO> getCustomerById(@Valid @NotNull @PathVariable("customerId") UUID customerId) {
