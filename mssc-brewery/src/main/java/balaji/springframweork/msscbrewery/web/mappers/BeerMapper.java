@@ -4,7 +4,7 @@ import balaji.springframweork.msscbrewery.domain.Beer;
 import balaji.springframweork.msscbrewery.web.model.v2.BeerDTOV2;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = {DateMapper.class})
 public interface BeerMapper {
 
     BeerDTOV2 beerToBeerDTO(Beer beer);
